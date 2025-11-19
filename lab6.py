@@ -13,14 +13,20 @@ def arrays():
     array10 = np.array([np.zeros([4,]), np.ones([4,]), 2*np.ones([4,])])
     return array1, array2, array3, array4, array5, array6,array7,array8,array9,array10
 
-def total_displacement(v1x,v1y,v2x,v2y,v3x,v3y):
-    v1 = np.array([v1x,v1y])
-    v2 = np.array([v2x,v2y])
-    v3 = np.array([v3x,v3y])
+def total_displacement(v1x, v1y, v2x, v2y, v3x, v3y):
+    import numpy as np
+
+    v1 = np.array([v1x, v1y])
+    v2 = np.array([v2x, v2y])
+    v3 = np.array([v3x, v3y])
+
     vR = v1 + v2 + v3
-    
+
     u = np.array([1/np.sqrt(2), -1/np.sqrt(2)])
-    
+
+
     vRu = np.dot(vR, u) * u
+
     len_vRu = np.sqrt(vRu[0]**2 + vRu[1]**2)
+
     return vR, vRu, len_vRu
