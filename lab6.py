@@ -14,20 +14,17 @@ def arrays():
     return array1, array2, array3, array4, array5, array6, array7, array8, array9, array10
 
 
-def total_displacement(v1x,v1y,v2x,v2y,v3x,v3y):
-    v1 = np.array([v1x, v1y])
-    v2 = np.array([v2x, v2y])
-    v3 = np.array([v3x, v3y])
-    
-    vR = v1 + v2 + v3
+def total_displacement(v1x, v1y, v2x, v2y, v3x, v3y):
 
-    # birim vektör u
-    u = np.array([1/np.sqrt(2), -1/np.sqrt(2)])
+    v1 = np.array([v1x, v1y], dtype=float)
+    v2 = np.array([v2x, v2y], dtype=float)
+    v3 = np.array([v3x, v3y], dtype=float)
 
-    # vR'nin u yönündeki izdüşümü
-    vRu = np.dot(vR, u)
+    v_R = v1 + v2 + v3
 
-    # uzunluk (scalar)
-    len_vRu = abs(vRu)
+    u = np.array([1.0, 0.0])
+    u = u / np.linalg.norm(u)
 
-    return vR, len_vRu
+    proj_length = np.dot(v_R, u)
+
+    return v_R, proj_length
